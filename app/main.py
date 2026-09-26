@@ -7,7 +7,7 @@ from app.model import model
 app = FastAPI(
     title="Iris Prediction API",
     description="A simple ML prediction API using FastAPI",
-    version="1.0.0",
+    version="1.1.0",
 )
 
 
@@ -21,8 +21,9 @@ class IrisInput(BaseModel):
 @app.get("/")
 def root():
     return {
-        "message": "Iris Prediction API is running"
-    }
+    "message": "Iris Prediction API is running",
+    "version": "1.1.0"
+}
 
 
 @app.get("/health")
