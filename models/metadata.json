@@ -1,0 +1,6 @@
+{
+    "python_version": "3.12.0",
+    "scikit_learn_version": "1.9.1",
+    "joblib_version": "1.6.0",
+    "model_type": "RandomForestClassifier"
+}
