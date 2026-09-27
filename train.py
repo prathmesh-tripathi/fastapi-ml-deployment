@@ -5,6 +5,10 @@ from sklearn.datasets import load_iris
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 
+import json
+import platform
+import sklearn
+import joblib
 
 # Load data
 iris = load_iris()
@@ -43,5 +47,17 @@ models_dir = Path("models")
 models_dir.mkdir(exist_ok=True)
 
 joblib.dump(model, models_dir / "iris_model.joblib")
+
+metadata = {
+    "python_version": platform.python_version(),
+    "scikit_learn_version": sklearn.__version__,
+    "joblib_version": joblib.__version__,
+    "model_type": type(model).__name__,
+}
+
+with open(models_dir / "metadata.json", "w") as f:
+    json.dump(metadata, f, indent=4)
+
+print("Metadata saved to models/metadata.json")
 
 print("Model saved to models/iris_model.joblib")
